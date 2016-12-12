@@ -1,0 +1,11 @@
+
+ /**
+  * Color of invalid field
+  * http://formvalidation.io/examples/changing-success-error-colors/
+  */
+.has-error,
+.has-error .help-block,
+.has-error .form-control-feedback {
+  color: #a94442;
+}
+

@@ -4,7 +4,7 @@
  */
 export class UsagerLoginInfo {
   idUsager: string;
-  motPasse: string;
-  nep: string;
+  motDePasse: string;
+  neq: string;
   courriel: string;
 }

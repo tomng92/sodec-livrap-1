@@ -15,6 +15,7 @@ import {RepoDetailComponent} from './github/repo-detail/repo-detail.component';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {ContactComponent} from './contact/contact.component';
 import {SamModal} from './sam-modal/samModal'
+import {EmailValidator} from "./validators/EmailValidator";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {SamModal} from './sam-modal/samModal'
     RepoDetailComponent,
     HomeComponent,
     ContactComponent
-    , SamModal
+    , SamModal,
+    EmailValidator
   ],
   imports: [
     BrowserModule,
