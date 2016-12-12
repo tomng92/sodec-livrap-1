@@ -1,0 +1,51 @@
+  <div *ngIf="windowVisible" class="modal-dialog fade show in danger" id="myModal" role="dialog">
+  <!--<div class="modal-dialog">-->
+    <!--<div class="form-connexion">-->
+
+      <div *ngIf="paramError">
+        <div class="alert alert-danger">
+          <small><strong>Nom d'utilisateur et mot de passe
+            invalide</strong></small>
+        </div>
+      </div>
+
+
+      <div  *ngIf="paramLogout">
+        <div class="alert alert-warning">
+          <small><strong>Vous avez été déconnecté</strong></small>
+        </div>
+      </div>
+
+
+      <form id="formulaire-connexion">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input type="text" class="form-control" name="username" placeholder="Courriel"/>
+        </div>
+
+        <br/>
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-option-horizontal"></i></span>
+          <input id="neq" type="text" class="form-control" name="neq" placeholder="NEQ"/>
+        </div>
+
+        <br/>
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+          <input id="password" type="password" class="form-control" name="password" placeholder="Mot de passe"/>
+        </div>
+        <br/>
+
+        <input type="submit" value="Se connecter"/>
+        <p class="message">
+          Non enregistré? <a th:href="@{/senregistrer}">Créer un compte</a>
+        </p>
+
+      </form>
+
+
+    <!--</div>-->
+  <!--</div>-->
+</div>

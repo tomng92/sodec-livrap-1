@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head th:include="commun :: enteteHtml" />
+
+<body class="hold-transition layout-top-nav">
+
+	<div class="wrapper">
+		<div th:replace="commun :: bandeau">&nbsp;</div>
+
+		<div class="content-wrapper">
+			<div class="container">
+				<div th:replace="commun :: messagesalertes">&nbsp;</div>
+
+				<section class="content-header">
+					<h1 th:text="#{collections.cles}">Collections de clés</h1>
+				</section>
+				<div th:replace="collections :: liste">&nbsp;</div>
+			</div>
+
+			<div class="container">
+				<section class="content-header">
+					<h1>
+						<small th:text="#{cles.liste}">Liste des Clés</small>
+					</h1>
+				</section>
+				<div id="conteneur-cles">
+					<div th:replace="cles :: liste">&nbsp;</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="descendre" class="content-wrapper"></div>
+	</div>
+
+	<div th:include="commun :: basdepage">&nbsp;</div>
+	
+</body>
+</html>

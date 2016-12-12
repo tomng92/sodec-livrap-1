@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:fragment="enteteHtml">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title th:text="#{kryptopas.titre}">Gesionnaire de clés - SODEC</title>
+
+<link rel="stylesheet" th:href="@{/resources/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/resources/bootstrap-notify/css/animate.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+<link rel="stylesheet" th:href="@{/resources/css/AdminLTE.min.css}" />
+<link rel="stylesheet" th:href="@{/resources/css/skins/_all-skins.min.css}" />
+<link rel="stylesheet" th:href="@{/resources/css/crypto-web.css}" />
+
+<script th:src="@{/resources/jQuery/jquery-3.1.1.min.js}"></script>
+<script th:src="@{/resources/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/resources/bootstrap-notify/js/bootstrap-notify.min.js}"></script>
+<script th:src="@{/resources/js/crypto-web.js}"></script>
+</head>
+
+<body>
+
+	<header id="bandeau" th:fragment="bandeau">
+		<div class="main-header">
+			<nav class="navbar navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<a th:href="@{/index}" class="navbar-brand"><b>Kryp</b>TOPAS</a>
+					</div>
+
+					<div class="container" align="right">
+						<form th:action="@{/logout}" method="post">
+							<button type="submit" class="btn btn-danger btn-xs navbar-btn">
+								<i class="glyphicon glyphicon-log-out"></i> <span th:text="#{kryptopas.deconnexion}">Déconnexion</span>
+							</button>
+						</form>
+					</div>
+
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	<div th:fragment="messagesalertes">
+		<div th:if="!${#lists.isEmpty(alertes)}">
+			<span th:each="alerte : ${alertes}"> <script th:inline="javascript">
+					/*<![CDATA[*/
+			    		var titre = [[${alerte.titre}]];
+			  			var message = [[${alerte.message}]];
+			    		var type = [[${alerte.type}]];
+						emettreAlert(titre, message, type);
+					/*]]>*/
+				</script>
+			</span>
+		</div>
+	</div>
+
+	<footer id="basdepage" th:fragment="basdepage">
+		<div class="main-footer">
+			<div class="container">
+				<strong>&copy; Gouvernement du Québec, 2016 <a href="http://intranet/Pages/default.aspx">SODEC</a>.
+				</strong>
+				<div class="pull-right hidden-xs">
+					<b>Version</b> 1.0.0
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

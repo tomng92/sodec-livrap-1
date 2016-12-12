@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head />
+<body>
+	<div th:fragment="liste">
+
+		<div class="container">
+			<div class="box-body table-responsive no-padding">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th th:text="#{collection.numero}"></th>
+							<th th:text="#{collection.nom}"></th>
+							<th th:text="#{collection.emplacement}"></th>
+							<th th:text="#{collection.but}"></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="collection, ligne : ${collections}"
+							th:onClick="'javascript:chargerCles(\'' + ${collection.nom} + '\');'">
+							<td th:text="${ligne.count}"></td>
+							<td th:text="${collection.nom}"></td>
+							<td th:text="${collection.emplacement}"></td>
+							<td th:text="#{${'collection.type.' + collection.but}}"></td>
+							<td class="icon-incolore">
+								<form action="#" th:action="@{/collections/supprimer}" th:object="${parametres}" method="post">
+									<input type="hidden" id="nom" name="nom" th:value="${collection.nom}" />
+									<button class="btn btn-success btn-xs" type="button"
+										th:onClick="'javascript:genererCle(\'' + ${collection.nom} + '\');'">
+										<i title="générer clé" class="glyphicon glyphicon-plus"></i>
+									</button>
+									<button type="submit" class="btn btn-danger btn-xs" name="supprimer_collection" value="supprimer">
+										<i title="supprimer" class="glyphicon glyphicon-erase"></i>
+									</button>
+									<script type="text/javascript">
+										$('button[name="supprimer_collection"]').on('click', function(e){
+				    						var $form=$(this).closest('form');
+				    						e.preventDefault();
+				    						$('#confirmer').modal({ backdrop: 'static', keyboard: false })
+				        						.one('click', '#supprimer', function() {
+				            						$form.trigger('submit'); // submit the form
+				        						});
+										});
+									</script>
+								</form> 
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="4" valign="bottom" align="right">
+								<button type="button" class="btn btn-info btn-md" th:text="#{collection.creer}" data-toggle="modal"
+									data-target="#ajouterCollection"></button>
+							</td>
+							<td></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+
+		<div id="confirmer" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body"><span th:text="#{collection.confirmersuppression}"></span></div>
+					<div class="modal-footer">
+						<button type="button" data-dismiss="modal" class="btn btn-danger" id="supprimer" th:text="#{collection.supprimer}">Supprimer</button>
+						<button type="button" data-dismiss="modal" class="btn" th:text="#{collection.annulersuppression}">Annuler</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="ajouterCollection" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title" th:text="#{collection.nouvelle}">Nouvelle Collection</h4>
+					</div>
+					<div class="modal-body">
+						<form action="#" th:action="@{/collections}" th:object="${parametres}" method="post">
+							<div class="form-group">
+								<label th:for="${#ids.next('nom')}" th:text="#{collection.nom}">Nom</label>
+								<input type="text" class="form-control" th:field="*{nom}" required="required" />
+							</div>
+							<div class="form-group">
+								<label th:for="${#ids.next('but')}" th:text="#{collection.but}">But</label> <select
+									class="form-control" th:field="*{but}">
+									<option th:each="but : ${T(gouv.sodec.goodies.cryptographie.noyau.cle.commun.ButCle).values()}"
+										th:value="${but}" th:text="#{${'collection.type.' + but}}"></option>
+								</select>
+							</div>
+							<div class="box-footer">
+								<button type="submit" name="creerCollection" th:value="#{collection.creer}" class="btn btn-primary">Créer</button>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" th:text="#{collection.annuler}">Annuler</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

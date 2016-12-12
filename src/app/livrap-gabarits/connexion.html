@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Connexion</title>
+
+<link th:href="@{/resources/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/resources/css/style.css}" rel="stylesheet" />
+</head>
+
+<body class="connexion">
+	<div class="page-connexion">
+		<div class="form-connexion">
+			<div th:if="${param.error}">
+				<div class="alert alert-danger">
+					<small><strong th:text="#{connexion.invalide}">Nom d'utilisateur et mot de passe
+							invalide</strong></small>
+				</div>
+			</div>
+			<div th:if="${param.logout}">
+				<div class="alert alert-warning">
+					<small><strong th:text="#{connexion.deconnexion}">Vous avez été déconnecté</strong></small>
+				</div>
+			</div>
+			<form id="formulaire-connexion" th:action="@{/seconnecter}" method="post">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input id="email" type="text" class="form-control" name="username" placeholder="Courriel" />
+				</div>
+				<br />
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-option-horizontal"></i></span>
+					<input id="neq" type="text" class="form-control" name="neq" placeholder="NEQ" />
+				</div>
+				<br />
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					<input id="password" type="password" class="form-control" name="password" placeholder="Mot de passe" />
+				</div>
+				<br />
+				<input type="submit" value="Se connecter" />
+				<p class="message">
+					Non enregistré? <a th:href="@{/senregistrer}">Créer un compte</a>
+				</p>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

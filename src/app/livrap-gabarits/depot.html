@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head th:include="commun :: enteteHtml" />
+
+<body>
+
+	<div th:if="${message}">
+		<h2 th:text="${message}"></h2>
+	</div>
+
+	<div>
+		<form method="POST" enctype="multipart/form-data" action="/">
+			<table>
+				<tr>
+					<td>Fichier à déposer:</td>
+					<td><input type="file" name="fichier" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Déposer" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<div>
+		<ul>
+			<li th:each="fichier : fichiers"><a th:href="${fichier}" th:text="${fichier}"></a></li>
+		</ul>
+	</div>
+
+</body>
+</html>

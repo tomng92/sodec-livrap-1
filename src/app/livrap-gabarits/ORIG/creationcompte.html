@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Création de compte</title>
+
+<link th:href="@{/resources/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/resources/css/style.css}" rel="stylesheet" />
+</head>
+
+<body class="connexion">
+	<div class="page-connexion">
+		<div class="form-enregistrement">
+			<form id="formulaire-enregistrement" th:action="@{/senregistrer}" th:object="${personne}" method="post">
+				<ul th:if="${#fields.hasErrors('*')}">
+					<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+				</ul>
+				<input type="text" th:field="*{nom}" placeholder="Nom" required="required" />
+				<input type="text" th:field="*{prenom}" placeholder="Prénom" required="required" />
+				<input type="text" th:field="*{courriel}" placeholder="Courriel" required="required" th:errorclass="fieldError" />
+				<div th:if="${#fields.hasErrors('courriel')}">errors</div>
+				<input type="text" th:field="*{mandant}" placeholder="NEQ ou courriel de la personne représentée" />
+				<input type="password" th:field="*{motDePasse}" placeholder="Créez un mot de passe" required="required" />
+				<input type="password" th:field="*{confirmationMdp}" placeholder="Confirmer votre mot de passe"
+					required="required" />
+				<input type="submit" value="Suivant" />
+				<p class="message">
+					Déjà enregistré? <a class="link" th:href="@{/seconnecter}">Se connecter</a>
+				</p>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
