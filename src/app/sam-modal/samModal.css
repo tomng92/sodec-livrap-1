@@ -9,3 +9,16 @@
   color: #a94442;
 }
 
+/**
+ * https://www.barbarianmeetscoding.com/blog/2016/03/29/getting-started-with-angular-2-step-by-step-5-forms-and-validation/
+ * Le not(ng-pristine) évite de colorier au tout début.
+ */
+ input.ng-valid:not(.ng-pristine):focus {
+   border: solid 1px darkgreen
+ ; /* green 42A948 */
+ }
+
+ /* invalid*/
+ input.ng-invalid:not(.ng-pristine) {
+      border: solid 1px #a94442; /* red */
+    }

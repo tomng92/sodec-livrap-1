@@ -20,7 +20,7 @@ export class EmailValidator implements Validator {
 
   validate(c: AbstractControl) {
 
-    console.log("valideate email !");
+    // console.log("valideate email !");
 
     let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 

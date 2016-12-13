@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
 import {UsagerLoginInfo} from "./usager-login-info";
 
 /**
@@ -12,14 +12,15 @@ enum ModeEntree {
   selector: 'sam-modal',
   // templateUrl: './samModal.html',
   templateUrl: './connexion.html',
-  styleUrls: [ './samModal.css']
+  styleUrls: ['./samModal.css']
 })
 export class SamModal {
 
-  public modelUsager: UsagerLoginInfo; // modèle de la forme
   curMode: ModeEntree = ModeEntree.ModeConnexion;
   paramError: boolean;
   paramLogout: boolean;
+
+  estConnecte: false;
 
   /**
    * la forme
@@ -32,6 +33,8 @@ export class SamModal {
   private ErrorMsg: string;
   private windowVisible: boolean;
 
+  @Output() surConnexionEvent = new EventEmitter<UsagerLoginInfo>(); // si usager s'est connecté
+
   /**
    *
    * @param msg
@@ -41,9 +44,16 @@ export class SamModal {
     this.windowVisible = true;
   }
 
+
+  /**
+   * Soumission de la forme de login.
+   * @param forme
+   */
   onSubmit(forme: any) {
-    console.log(`submit ${forme}`);
-    console.log(`${this.formNeq} ${forme}`);
+
+    this.surConnexionEvent.emit(new UsagerLoginInfo(this.formCourriel, this.formNeq));
+
+    this.hide();
   }
 
   /**

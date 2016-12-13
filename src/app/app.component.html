@@ -2,30 +2,36 @@
   Angular 2 Seed
 </h3>
 <nav>
-	<a [routerLink]="['/']">
+  <a [routerLink]="['/']">
     Home
   </a>
   |
-	<a [routerLink]="['/about']">
+  <a [routerLink]="['/about']">
     About
   </a>
   |
-	<a [routerLink]="['/github', 'angular']">
+  <a [routerLink]="['/github', 'angular']">
     Github Repos
   </a>
   |
-	<a [routerLink]="['/contact']">
+  <a [routerLink]="['/contact']">
     Contact Us
   </a>
 
   &nbsp;
-  <button (click)="openModal()" #openModalButton >Ouvrir login</button>
-
+  <span *ngIf="!usagerEstConnecte">
+    <button (click)="openModal()" #openModalButton>Ouvrir login</button>
+  </span>
+  <span *ngIf="usagerEstConnecte">
+    Bravo! Usager {{usager?.courriel}}
+  </span>
 </nav>
 
-<sam-modal #modalWindow></sam-modal>
+<sam-modal #modalWindow (surConnexionEvent)="surConnexion($event);"></sam-modal>
+
+
 <main>
-	<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </main>
 
 

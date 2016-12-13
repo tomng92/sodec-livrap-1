@@ -18,22 +18,26 @@
 
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input type="text" class="form-control " [(ngModel)]="formCourriel" id="courriel" name="courriel" #champCourriel validateEmail placeholder="Courriel"/>
-      <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': champCourriel.validateEmail, 'glyphicon-remove': champCourriel.validateEmail.valid==false}"aria-hidden="true"></span>
+      <input type="text" class="form-control " [(ngModel)]="formCourriel" id="courriel" name="courriel" #champCourriel validateEmail placeholder="Courriel" />
+      <!--<span class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok': champCourriel.classList.contains('ng-valid'), 'glyphicon-remove': champCourriel.valid==false}" aria-hidden="true"></span>-->
+
+
+
     </div>
 
     <br/>
 
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-option-horizontal"></i></span>
-      <input type="text" class="form-control" [(ngModel)]="formNeq" required  name="neq" placeholder="NEQ"/>
+      <input type="text" class="form-control" [(ngModel)]="formNeq" #champNEQ pattern="[0-9]{4}" name="neq" placeholder="NEQ"/>
+      <!--<span class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok': champCourriel.classList.contains('ng-valid'), 'glyphicon-remove': champCourriel.valid==false}" aria-hidden="true"></span>-->
     </div>
 
     <br/>
 
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-      <input type="password" class="form-control" [(ngModel)]="formMotDePasse" minlength="2" id="motDePasse" name="motDePasse" placeholder="Mot de passe"/>
+      <input type="password" class="form-control" [(ngModel)]="formMotDePasse" #champMotDePasse minlength="3" id="motDePasse" name="motDePasse" placeholder="Mot de passe"/>
     </div>
     <br/>
 
@@ -42,8 +46,6 @@
     <p class="message">
       Non enregistré? <a href="/senregistrer}">Créer un compte</a>
     </p>
-
-
 
 
   </form>
