@@ -22,12 +22,20 @@
   <span *ngIf="!usagerEstConnecte">
     <button (click)="openModal()" #openModalButton>Ouvrir login</button>
   </span>
-  <span *ngIf="usagerEstConnecte">
-    Bravo! Usager {{usager?.courriel}}
+
+  &nbsp;
+  <span>
+    <button (click)="toggleGreenModal()">Ouvrir model-vert</button>
   </span>
+
+
 </nav>
 
 <sam-modal #modalWindow (surConnexionEvent)="surConnexion($event);"></sam-modal>
+
+<div *ngIf="!greenModalOuvert">
+  <green-modal></green-modal>
+</div>
 
 
 <main>

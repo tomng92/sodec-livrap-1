@@ -16,6 +16,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {ContactComponent} from './contact/contact.component';
 import {SamModal} from './sam-modal/samModal'
 import {EmailValidator} from "./validators/EmailValidator";
+import {GreenModal} from "./green-modal/green-modal";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {EmailValidator} from "./validators/EmailValidator";
     HomeComponent,
     ContactComponent
     , SamModal,
-    EmailValidator
+    EmailValidator,
+    GreenModal
   ],
   imports: [
     BrowserModule,

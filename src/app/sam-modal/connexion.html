@@ -1,54 +1,44 @@
 <div *ngIf="windowVisible" class="modal-dialog fade show in danger" id="myModal" role="dialog">
-  <div *ngIf="paramError">
-    <div class="alert alert-danger">
-      <small><strong>Nom d'utilisateur et mot de passe
-        invalide</strong></small>
-    </div>
+
+  <div class="container" >
+
+    <form #maForme="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input type="text" class="form-control " [(ngModel)]="formCourriel" id="courriel" name="courriel" #champCourriel
+               validateEmail placeholder="Courriel"/>
+        <!--<span class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok': champCourriel.classList.contains('ng-valid'), 'glyphicon-remove': champCourriel.valid==false}" aria-hidden="true"></span>-->
+
+
+      </div>
+
+      <br/>
+
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-option-horizontal"></i></span>
+        <input type="text" class="form-control" [(ngModel)]="formNeq" #champNEQ pattern="[0-9]{4}" name="neq"
+               placeholder="NEQ"/>
+        <!--<span class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok': champCourriel.classList.contains('ng-valid'), 'glyphicon-remove': champCourriel.valid==false}" aria-hidden="true"></span>-->
+      </div>
+
+      <br/>
+
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+        <input type="password" class="form-control" [(ngModel)]="formMotDePasse" #champMotDePasse minlength="3"
+               id="motDePasse" name="motDePasse" placeholder="Mot de passe"/>
+      </div>
+      <br/>
+
+      <button type="submit" class="btn" [disabled]="!maForme.form.valid">Se connecter</button>
+
+      <p class="message">
+        Non enregistré? <a href="/senregistrer}">Créer un compte</a>
+      </p>
+
+
+    </form>
+
   </div>
-
-
-  <div *ngIf="paramLogout">
-    <div class="alert alert-warning">
-      <small><strong>Vous avez été déconnecté</strong></small>
-    </div>
-  </div>
-
-
-  <form #maForme="ngForm" (ngSubmit)="onSubmit(maForme)" novalidate>
-
-    <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input type="text" class="form-control " [(ngModel)]="formCourriel" id="courriel" name="courriel" #champCourriel validateEmail placeholder="Courriel" />
-      <!--<span class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok': champCourriel.classList.contains('ng-valid'), 'glyphicon-remove': champCourriel.valid==false}" aria-hidden="true"></span>-->
-
-
-
-    </div>
-
-    <br/>
-
-    <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-option-horizontal"></i></span>
-      <input type="text" class="form-control" [(ngModel)]="formNeq" #champNEQ pattern="[0-9]{4}" name="neq" placeholder="NEQ"/>
-      <!--<span class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok': champCourriel.classList.contains('ng-valid'), 'glyphicon-remove': champCourriel.valid==false}" aria-hidden="true"></span>-->
-    </div>
-
-    <br/>
-
-    <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-      <input type="password" class="form-control" [(ngModel)]="formMotDePasse" #champMotDePasse minlength="3" id="motDePasse" name="motDePasse" placeholder="Mot de passe"/>
-    </div>
-    <br/>
-
-    <button type="submit" class="btn" [disabled]="!maForme.form.valid">Se connecter</button>
-
-    <p class="message">
-      Non enregistré? <a href="/senregistrer}">Créer un compte</a>
-    </p>
-
-
-  </form>
-
-
 </div>

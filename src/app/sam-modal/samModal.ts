@@ -1,5 +1,9 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component, Output, EventEmitter, ViewChild, AfterViewInit} from '@angular/core';
 import {UsagerLoginInfo} from "./usager-login-info";
+import 'rxjs/add/observable/combineLatest';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/filter';
+import {VALID} from "@angular/forms/src/model";
 
 /**
  * Login ou enregistrement de l'usager.
@@ -14,7 +18,25 @@ enum ModeEntree {
   templateUrl: './connexion.html',
   styleUrls: ['./samModal.css']
 })
-export class SamModal {
+export class SamModal implements AfterViewInit {
+
+  @ViewChild("maForme") maForme;
+
+  ngAfterViewInit() {
+
+    console.log(this.maForme);
+
+    // this.maForme.valueChanges().subscribe(v => console.table(v));
+    //
+    // Observable.combineLatest(
+    //   this.maForme.valueChanges,
+    //   this.maForme.statusChanges,
+    //   status, value => ({status, value}))
+    //   .filter(({status}) => status === VALID)
+    //   .subscribe(({status, value}) => console.log(`status = ${status} - value = ${value}`)
+    //   );
+  }
+
 
   curMode: ModeEntree = ModeEntree.ModeConnexion;
   paramError: boolean;

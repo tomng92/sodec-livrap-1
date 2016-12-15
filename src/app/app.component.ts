@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {SamModal} from "./sam-modal/samModal";
 import {UsagerLoginInfo} from "./sam-modal/usager-login-info";
+import {GreenModal} from "./green-modal/green-modal";
 
 @Component({
   selector: 'app',
@@ -9,12 +10,19 @@ import {UsagerLoginInfo} from "./sam-modal/usager-login-info";
 })
 export class AppComponent {
 
+  greenModalOuvert:boolean = false;
+
   @ViewChild("modalWindow") modalWindow: SamModal;
+  @ViewChild("greenModalWindow") greenModalWindow: GreenModal;
   public usager: UsagerLoginInfo = null;
   public usagerEstConnecte: boolean = false;
 
   openModal() {
     this.modalWindow.show("");
+  }
+  toggleGreenModal() {
+    this.greenModalOuvert = !this.greenModalOuvert;
+    console.log(this.greenModalOuvert);
   }
 
   /**
