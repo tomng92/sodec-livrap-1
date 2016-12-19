@@ -25,15 +25,20 @@
 
   &nbsp;
   <span>
-    <button (click)="toggleGreenModal()">Ouvrir model-vert</button>
+    <button (click)="greenModalOuvert = !greenModalOuvert" [innerHTML]="greenModalOuvert ? 'fermer le modal': 'ouvrir le modal vert' "></button>
   </span>
+
+  &nbsp;
+  <a [routerLink]="['/kendo-upload']">
+    Kendo File upload
+  </a>
 
 
 </nav>
 
 <sam-modal #modalWindow (surConnexionEvent)="surConnexion($event);"></sam-modal>
 
-<div *ngIf="!greenModalOuvert">
+<div *ngIf="greenModalOuvert">
   <green-modal></green-modal>
 </div>
 

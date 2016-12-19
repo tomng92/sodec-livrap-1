@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'green-modal',
@@ -6,4 +6,5 @@ import {Component} from '@angular/core';
   templateUrl: './green-modal.html'
 })
 export class GreenModal {
+  @Input()   iAmOuvert: boolean;
 }

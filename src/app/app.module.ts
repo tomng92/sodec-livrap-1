@@ -5,7 +5,9 @@ import {AppComponent} from './app.component';
 import {GithubService} from './github/shared/github.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
-import {HttpModule} from '@angular/http';
+
+import {MockBackend} from "@angular/http/testing"; // doit [etre avant Http!
+import {HttpModule, BaseRequestOptions, Http} from '@angular/http';
 
 import {AboutComponent} from './about/about.component';
 import {HomeComponent} from './home/home.component';
@@ -17,6 +19,10 @@ import {ContactComponent} from './contact/contact.component';
 import {SamModal} from './sam-modal/samModal'
 import {EmailValidator} from "./validators/EmailValidator";
 import {GreenModal} from "./green-modal/green-modal";
+import { UploadModule } from '@progress/kendo-angular-upload';
+import {KendoUpload} from "./kendo-upload/kendoUpload";
+
+
 
 @NgModule({
   declarations: [
@@ -26,21 +32,35 @@ import {GreenModal} from "./green-modal/green-modal";
     RepoListComponent,
     RepoDetailComponent,
     HomeComponent,
-    ContactComponent
-    , SamModal,
+    ContactComponent,
+    SamModal,
     EmailValidator,
-    GreenModal
+    GreenModal,
+    KendoUpload
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(rootRouterConfig, {useHash: true})
+    UploadModule,
+
+   RouterModule.forRoot(rootRouterConfig, {useHash: true})
   ],
+
   providers: [
-    GithubService
-  ],
+    GithubService,
+
+    BaseRequestOptions,
+    MockBackend,
+    {
+      provide: Http,
+      deps: [MockBackend, BaseRequestOptions],
+      useFactory: (backend, options) => {
+        return new Http(backend, options);
+      }
+    }],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {

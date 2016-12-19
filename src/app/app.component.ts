@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, ElementRef} from '@angular/core';
 import {SamModal} from "./sam-modal/samModal";
 import {UsagerLoginInfo} from "./sam-modal/usager-login-info";
 import {GreenModal} from "./green-modal/green-modal";
@@ -22,6 +22,7 @@ export class AppComponent {
   }
   toggleGreenModal() {
     this.greenModalOuvert = !this.greenModalOuvert;
+    //this.boutonOuvrirModalVert.nativeElement.innerHTML = this.greenModalOuvert ? "fermer le vert": "ouvrir le modal vert" ;
     console.log(this.greenModalOuvert);
   }
 
