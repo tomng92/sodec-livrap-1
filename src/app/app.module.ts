@@ -21,6 +21,8 @@ import {EmailValidator} from "./validators/EmailValidator";
 import {GreenModal} from "./green-modal/green-modal";
 import { UploadModule } from '@progress/kendo-angular-upload';
 import {KendoUpload} from "./kendo-upload/kendoUpload";
+import {GreenContainer} from "./green-modal/container/greenContainer";
+import {ContentComponent} from "./green-modal/container/contentComponent";
 
 
 
@@ -36,7 +38,9 @@ import {KendoUpload} from "./kendo-upload/kendoUpload";
     SamModal,
     EmailValidator,
     GreenModal,
-    KendoUpload
+    KendoUpload,
+    GreenContainer,
+    ContentComponent
   ],
   imports: [
     BrowserModule,

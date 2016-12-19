@@ -11,19 +11,39 @@ import {GreenModal} from "./green-modal/green-modal";
 export class AppComponent {
 
   greenModalOuvert:boolean = false;
+  routerOutletVisible: boolean = false;
 
-  @ViewChild("modalWindow") modalWindow: SamModal;
+  @ViewChild("samModalWindow") samModalWindow: SamModal;
   @ViewChild("greenModalWindow") greenModalWindow: GreenModal;
   public usager: UsagerLoginInfo = null;
   public usagerEstConnecte: boolean = false;
 
-  openModal() {
-    this.modalWindow.show("");
+  openSamModal() {
+    this.samModalWindow.show("");
   }
+
+
+
   toggleGreenModal() {
+    this.hideRouterOutlet();
+
+    console.log("green modal est : " + this.greenModalOuvert);
+
     this.greenModalOuvert = !this.greenModalOuvert;
+
+    this.samModalWindow.hide();
+
+
     //this.boutonOuvrirModalVert.nativeElement.innerHTML = this.greenModalOuvert ? "fermer le vert": "ouvrir le modal vert" ;
-    console.log(this.greenModalOuvert);
+
+    // fermer le sam modal windows
+  }
+
+  hideRouterOutlet() {
+    this.routerOutletVisible = false;
+  }
+  showRouterOutlet() {
+    this.routerOutletVisible = true;
   }
 
   /**

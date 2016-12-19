@@ -3,7 +3,7 @@ import {MockBackend} from "@angular/http/testing";
 import {ResponseOptions, Response} from "@angular/http";
 
 @Component({
-  //selector: 'kendo-upload',
+  selector: 'le-kendo-upload',
 
   template: `
     Veuillez choisir un ou plusieurs fichier:<br>

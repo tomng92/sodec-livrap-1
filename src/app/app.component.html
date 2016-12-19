@@ -19,13 +19,12 @@
   </a>
 
   &nbsp;
-  <span *ngIf="!usagerEstConnecte">
-    <button (click)="openModal()" #openModalButton>Ouvrir login</button>
-  </span>
+  <button (click)="openSamModal()">Toggle Sam Modal</button>
 
   &nbsp;
   <span>
-    <button (click)="greenModalOuvert = !greenModalOuvert" [innerHTML]="greenModalOuvert ? 'fermer le modal': 'ouvrir le modal vert' "></button>
+    <button (click)="toggleGreenModal()"
+            [innerHTML]="greenModalOuvert ? 'fermer le modal': 'ouvrir le modal vert' "></button>
   </span>
 
   &nbsp;
@@ -36,17 +35,21 @@
 
 </nav>
 
-<sam-modal #modalWindow (surConnexionEvent)="surConnexion($event);"></sam-modal>
-
-<div *ngIf="greenModalOuvert">
-  <green-modal></green-modal>
+<div>
+  <sam-modal #samModalWindow (surConnexionEvent)="surConnexion($event);"></sam-modal>
 </div>
 
 
-<main>
-  <router-outlet></router-outlet>
-</main>
+<div *ngIf="greenModalOuvert">
+  <green-container></green-container>
+</div>
 
+
+<div style="width: 60%">
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
 
 <footer>
   © 2016
