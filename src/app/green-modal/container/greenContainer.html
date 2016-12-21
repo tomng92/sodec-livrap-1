@@ -1,35 +1,54 @@
+<div id="wrapper">
+  <div style="margin-left: auto;margin-right: auto; width:70%">
+    <green-modal>
+
+      <div style="height: 33px"></div>
+
+      <div [@monSignalAnim]="monSignalAnim" style="background-color: #e2e2e2;">
 
 
-<green-modal>
+        <content-component [hidden]="!isVisible(1)" [leTitre]="'Information du client'">
+          <sam-modal></sam-modal>
+        </content-component>
 
-  <div  style="height: 33px"></div>
+        <content-component [hidden]="!isVisible(2)" [leTitre]="'Inscription des collaborateurs'">
+          Le contenu 2
+        </content-component>
 
-  <div [@monSignalAnim]="monSignalAnim" style="background-color: #e2e2e2;">
+        <content-component [hidden]="!isVisible(3)" [leTitre]="'Téléversement des fichiers'">
+          <le-kendo-upload></le-kendo-upload>
+        </content-component>
+
+        <content-component [hidden]="!isVisible(4)" [leTitre]="'Soumission du dossier'">
+          Voici l'information que vous avez entré:
+          <ul>
+            <li>Nom: Jean Untel</li>
+            <li>NEQ: 2222223322</li>
+            <li>Collaborateur 1: Jean Untel</li>
+            <li>Collaborateur 2: Bernard Derôme</li>
+            <li>Collaborateur 3: André Lamontagne</li>
+            <li>Fichier: abc.pdf</li>
+            <li>Fichier: xxx.zip</li>
+          </ul>
+
+        </content-component>
+
+        <div style="height: 33px"></div>
+
+        <div style="width: 100%; text-align: center;">
+          <input *ngIf="currentVisible > 1" type="button" (click)="prevWind()" value="<< Précédent">
+
+          <input *ngIf="currentVisible < 4" type="button" (click)="nextWind()" value="Suivant >>"
+                 style="margin-left:100px;">
+
+          <input *ngIf="currentVisible == 4" type="button" value="Soumettre mon dossier" style="margin-left:100px;">
+        </div>
+
+        <div style="height: 17px"></div>
 
 
-    <content-component [hidden]="!isVisible(1)" [leTitre]="'Information du client'">
-      <sam-modal></sam-modal>
-    </content-component>
+      </div>
 
-    <content-component [hidden]="!isVisible(2)" [leTitre]="'Inscription des collaborateurs'">
-      Le contenu 2
-    </content-component>
-
-    <content-component [hidden]="!isVisible(3)" [leTitre]="'Téléversement des fichiers'">
-      <le-kendo-upload></le-kendo-upload>
-    </content-component>
-
-    <div style="height: 33px" ></div>
-
-    <div style="width: 100%; text-align: center;">
-      <input type="button" (click)="prevWind()" [disabled]="currentVisible == 1" value="<<Previous">
-
-      <input type="button" (click)="nextWind()" [disabled]="currentVisible == 3" value="Next>>" style="margin-left:100px;">
-    </div>
-
-    <div style="height: 17px" ></div>
-
-
+    </green-modal>
   </div>
-
-</green-modal>
+</div>

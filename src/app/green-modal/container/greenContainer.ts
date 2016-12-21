@@ -11,23 +11,33 @@ import {Observable} from "rxjs";
   animations: [
     trigger('monSignalAnim', [
       state('etat-1', style({
-        'opacity': 1
+        'opacity': 1,
         }
       )),
       state('etat-2', style({
-        'opacity': 1
+        'opacity': 1,
+        'height': '200px'
         }
       )),
       state('etat-3', style({
-        'opacity': 1
+          'opacity': 1,
+        'width': '560px'
+        }
+      )),
+      state('etat-4', style({
+          'opacity': 1,
+          'height': '300px',
+          'width': '600px'
         }
       )),
       state('etat-VOID', style({
-          'opacity': 0
+          'opacity': 0,
+          'height': '300px',
+          'width': '560px'
         }
       )),
 
-      transition("* => *", animate(500))
+      transition("* => *", animate(300))
 
     ])
   ]
@@ -49,7 +59,7 @@ export class GreenContainer implements OnInit {
 
   nextWind() {
     this.setCurrentVisible(this.currentVisible + 1);
-    if (this.currentVisible > 3) {
+    if (this.currentVisible > 4) {
       this.currentVisible = 1;
     }
   }
@@ -57,7 +67,7 @@ export class GreenContainer implements OnInit {
   prevWind() {
     this.setCurrentVisible(this.currentVisible -1);
     if (this.currentVisible < 1) {
-      this.currentVisible = 3;
+      this.currentVisible = 4;
     }
   }
 
