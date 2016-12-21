@@ -1,6 +1,6 @@
-<div *ngIf="windowVisible" class="modal-dialog fade show in danger" id="myModal" role="dialog">
+<div *ngIf="windowVisible"  id="myModal" >
 
-  <div class="container" >
+  <!--<div class="container" >-->
 
     <form #maForme="ngForm" (ngSubmit)="onSubmit()" novalidate>
 
@@ -8,7 +8,6 @@
         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
         <input type="text" class="form-control " [(ngModel)]="formCourriel" id="courriel" name="courriel" #champCourriel
                validateEmail placeholder="Courriel"/>
-        <!--<span class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok': champCourriel.classList.contains('ng-valid'), 'glyphicon-remove': champCourriel.valid==false}" aria-hidden="true"></span>-->
 
 
       </div>
@@ -17,9 +16,8 @@
 
       <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-option-horizontal"></i></span>
-        <input type="text" class="form-control" [(ngModel)]="formNeq" #champNEQ pattern="[0-9]{4}" name="neq"
+        <input type="text" class="form-control" [(ngModel)]="formNeq" #champNEQ pattern="[0-9]{4,}" name="neq"
                placeholder="NEQ"/>
-        <!--<span class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok': champCourriel.classList.contains('ng-valid'), 'glyphicon-remove': champCourriel.valid==false}" aria-hidden="true"></span>-->
       </div>
 
       <br/>
@@ -31,7 +29,10 @@
       </div>
       <br/>
 
-      <button type="submit" class="btn" [disabled]="!maForme.form.valid">Se connecter</button>
+      <!--<button type="submit" class="btn" [disabled]="!maForme.form.valid">Se connecter</button>-->
+      {{maForme.form.valid ? "valide" : "non valide"}}
+
+      <br>
 
       <p class="message">
         Non enregistré? <a href="/senregistrer}">Créer un compte</a>
@@ -40,5 +41,7 @@
 
     </form>
 
-  </div>
+  <!--</div>-->
+
+
 </div>

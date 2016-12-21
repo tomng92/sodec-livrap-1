@@ -53,7 +53,7 @@ export class SamModal implements AfterViewInit {
 
 
   private ErrorMsg: string;
-  private windowVisible: boolean;
+  private windowVisible: boolean = true;
 
   @Output() surConnexionEvent = new EventEmitter<UsagerLoginInfo>(); // si usager s'est connecté
 
