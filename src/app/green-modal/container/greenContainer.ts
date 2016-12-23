@@ -53,7 +53,7 @@ export class GreenContainer implements OnInit {
     this.setCurrentVisible(1);
   }
 
-  isVisible(wind: number) {
+  isCurrent(wind: number) {
     return this.currentVisible == wind;
   }
 

@@ -23,6 +23,7 @@ import { UploadModule } from '@progress/kendo-angular-upload';
 import {KendoUpload} from "./kendo-upload/kendoUpload";
 import {GreenContainer} from "./green-modal/container/greenContainer";
 import {ContentComponent} from "./green-modal/container/contentComponent";
+import {MonFileUpload} from "./fileUpload/MonFileUpload";
 
 
 
@@ -40,7 +41,8 @@ import {ContentComponent} from "./green-modal/container/contentComponent";
     GreenModal,
     KendoUpload,
     GreenContainer,
-    ContentComponent
+    ContentComponent,
+    MonFileUpload
   ],
   imports: [
     BrowserModule,

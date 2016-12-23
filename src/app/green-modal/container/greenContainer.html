@@ -7,19 +7,20 @@
       <div [@monSignalAnim]="monSignalAnim" style="background-color: #e2e2e2;">
 
 
-        <content-component [hidden]="!isVisible(1)" [leTitre]="'Information du client'">
+        <content-component [hidden]="!isCurrent(1)" [leTitre]="'Information du client'">
           <sam-modal></sam-modal>
         </content-component>
 
-        <content-component [hidden]="!isVisible(2)" [leTitre]="'Inscription des collaborateurs'">
+        <content-component [hidden]="!isCurrent(2)" [leTitre]="'Inscription des collaborateurs'">
           Le contenu 2
         </content-component>
 
-        <content-component [hidden]="!isVisible(3)" [leTitre]="'Téléversement des fichiers'">
-          <le-kendo-upload></le-kendo-upload>
+        <content-component [hidden]="!isCurrent(3)" [leTitre]="'Téléversement des fichiers'">
+          <!--<le-kendo-upload></le-kendo-upload>-->
+          <mon-file-upload></mon-file-upload>
         </content-component>
 
-        <content-component [hidden]="!isVisible(4)" [leTitre]="'Soumission du dossier'">
+        <content-component [hidden]="!isCurrent(4)" [leTitre]="'Soumission du dossier'">
           Voici l'information que vous avez entré:
           <ul>
             <li>Nom: Jean Untel</li>
